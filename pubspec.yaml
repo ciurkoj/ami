@@ -1,0 +1,32 @@
+name: ami
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0-348.0.dev <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_hooks: ^0.20.1
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  provider: ^6.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+
+flutter_intl:
+  enabled: true
+  class_name: UntitledLocalization
+  main_locale: pl
