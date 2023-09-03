@@ -1,4 +1,4 @@
-import 'package:ami/src/theme/application/them_application.dart';
+import 'package:ami/src/theme/application/theme_application.dart';
 import 'package:flutter/material.dart';
 
 class ThemeDark extends ApplicationTheme {
@@ -9,12 +9,12 @@ class ThemeDark extends ApplicationTheme {
     return _instance!;
   }
 
-  static const _primary = Color(0xFF0A69B5);
+  static const _primary = Colors.blue;
 
   ThemeDark._init();
 
   @override
-  ThemeData? get theme => ThemeData(
+  ThemeData get theme => ThemeData(
     useMaterial3: true,
     colorScheme: ColorScheme.fromSeed(
       seedColor: _primary,
@@ -22,8 +22,13 @@ class ThemeDark extends ApplicationTheme {
       primary: _primary,
     ),
     cardTheme: const CardTheme(
+      color: Colors.black,
       margin: EdgeInsets.zero,
-      shape: RoundedRectangleBorder(),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(16),
+        ),
+      ),
     ),
   );
 }

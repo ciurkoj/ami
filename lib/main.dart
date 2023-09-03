@@ -1,6 +1,7 @@
 import 'package:ami/generated/l10n.dart';
+import 'package:ami/src/extensions/build_context.dart';
 import 'package:ami/src/pages/home.dart';
-import 'package:ami/src/theme/theme_manager1.dart';
+import 'package:ami/src/theme/theme_manager_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,18 +16,28 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ThemeManager.instance),
+        ChangeNotifierProvider(create: (_) => ThemeManagerImpl.instance),
       ],
-      child: MaterialApp(
-        theme: context.watch<ThemeManager>().currentTheme,
-        darkTheme: context.read<ThemeManager>().darkTheme,
-        highContrastTheme: context.read<ThemeManager>().wcagTheme,
-        localizationsDelegates: const [
-          AmiLocalization.delegate,
-        ],
-        supportedLocales: AmiLocalization.supportedLocales,
-        home: const HomePage(),
-      ),
+      child: const ThemeManagedApp1(),
     );
   }
 }
+class ThemeManagedApp1 extends StatelessWidget {
+  const ThemeManagedApp1({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Material App',
+      theme: context.lightTheme,
+      darkTheme: context.darkTheme,
+      highContrastTheme: context.wcagTheme,
+      localizationsDelegates: const [
+        AmiLocalization.delegate,
+      ],
+      supportedLocales: AmiLocalization.supportedLocales,
+      home: const HomePage(),
+    );
+  }
+}
+
